@@ -11,13 +11,18 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  //TODO возможно нужно дополнить запрос в body
-  login(user: any)/*: Observable<Token>*/{
-    return this.http.post(`${environment.baseURL}/login`,user)
+  login(user: User): Observable<any>{
+    return this.http.post(`${environment.baseURL}/login`,
+      `grant_type=&username=${user.username}&password=${user.password}&scope=&client_id=&client_secret=`,
+      {headers:  { Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded",}}
+    )
   }
 
   registration(user: User):Observable<any>{
-    return this.http.post(`${environment.baseURL}/register`,user)
+    return this.http.post(`${environment.baseURL}/register?username=${user.username}&password=${user.password}`,
+      {username: user.username, password: user.password},
+      {headers:  {Accept: "application/json", "Content-Type": "application/json"}}
+    )
   }
 
 }

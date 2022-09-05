@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.auth.registration(user).subscribe((res)=>{
-      console.log(res)
+      console.log(res, 'reg+++++')
     })
 
   }
