@@ -8,13 +8,15 @@ import { MainComponent } from "./main-page/main.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,

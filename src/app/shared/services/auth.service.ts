@@ -20,7 +20,7 @@ export class AuthService {
 
   registration(user: User):Observable<any>{
     return this.http.post(`${environment.baseURL}/register?username=${user.username}&password=${user.password}`,
-      {username: user.username, password: user.password},
+      JSON.stringify({username: user.username, password: user.password}),
       {headers:  {Accept: "application/json", "Content-Type": "application/json"}}
     )
   }
