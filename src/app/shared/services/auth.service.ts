@@ -11,18 +11,31 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<any>{
+  login(user: User): Observable<any> {
     return this.http.post(`${environment.baseURL}/login`,
       `grant_type=&username=${user.username}&password=${user.password}&scope=&client_id=&client_secret=`,
       {headers:  { Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded",}}
     )
   }
 
-  registration(user: User):Observable<any>{
+  registration(user: User):Observable<any> {
     return this.http.post(`${environment.baseURL}/register?username=${user.username}&password=${user.password}`,
       JSON.stringify({username: user.username, password: user.password}),
       {headers:  {Accept: "application/json", "Content-Type": "application/json"}}
     )
   }
+
+  setToken(response: any): void {
+    if (response) {
+      localStorage.setItem('fb-token', response.access_token);
+    }
+    else {
+      localStorage.clear();
+    }
+  }
+
+  get isLoggedIn(): boolean { return !!localStorage.getItem('fb-token') }
+
+  logout() { this.setToken(null) }
 
 }

@@ -1,8 +1,12 @@
-<p>register works!</p>
 
 <div class="login-page">
   <div class="form">
     <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="form-header">
+        <h1>SIGN UP</h1>
+        <h4>Register Yourself</h4>
+      </div>
 
       <div>
         <input type="text" formControlName="username" placeholder="Username"/>
@@ -23,7 +27,7 @@
       </div>
 
       <div class="login-form">
-        <button type="submit" [disabled]="form.invalid || submitted">register</button>
+        <button type="submit" [disabled]="form.invalid || submitted">Register</button>
       </div>
 
       <p>Already registered? Click to <a [routerLink]="['../login']">Login</a></p>
