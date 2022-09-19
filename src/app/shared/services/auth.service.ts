@@ -38,4 +38,15 @@ export class AuthService {
 
   logout() { this.setToken(null) }
 
+  squeeze(link: string) {
+    return this.http.post(`${environment.baseURL}/squeeze?link=${link}`,
+      JSON.stringify({link}),
+      {headers:
+        {Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"}
+      }
+    )
+  }
+
 }

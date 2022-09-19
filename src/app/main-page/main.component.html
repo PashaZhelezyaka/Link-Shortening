@@ -1,1 +1,38 @@
-<p>home works!</p>
+<div class="main">
+  <h1 class="header">Welcome to link shortening service</h1>
+  <mat-form-field class="example-full-width inputLink" appearance="outline">
+    <mat-label>Insert link</mat-label>
+    <input matInput type="url" [(ngModel)]="linkInput">
+  </mat-form-field>
+
+  <button class="send-button" mat-fab style="background:#17a589 " (click)="sendLink()">Send</button>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="table">
+
+      <ng-container matColumnDef="short">
+        <th mat-header-cell *matHeaderCellDef> Short Link </th>
+        <td mat-cell *matCellDef="let element"> {{element['short']}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="target">
+        <th mat-header-cell *matHeaderCellDef> Default Link </th>
+        <td mat-cell *matCellDef="let element"> {{element.target}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="counter">
+        <th mat-header-cell *matHeaderCellDef> Users Counter </th>
+        <td mat-cell *matCellDef="let element"> {{element.counter}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+</div>
