@@ -3,6 +3,7 @@ import { AuthService } from "../shared/services/auth.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { LinksInterface } from "../shared/interface/interface";
 import { MatPaginator } from "@angular/material/paginator";
+import { environment } from "../../environments/environment";
 
 const links: LinksInterface[] = [];
 
@@ -16,6 +17,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   linkInput: string = '';
   displayedColumns: string[] = ['short', 'target', 'counter'];
   dataSource = new MatTableDataSource<LinksInterface>(links);
+  copyShortUrl: string = `${environment.baseURL}/s/`
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -47,5 +49,10 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.dataSource.filter = '';
       this.paginator._changePageSize(this.paginator.pageSize);
     })
+  }
+
+  clickTest(shortURL: string){
+    this.copyShortUrl = `http://79.143.31.216/s/${shortURL}`
+
   }
 }
