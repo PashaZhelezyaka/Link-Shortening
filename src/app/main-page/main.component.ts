@@ -19,10 +19,21 @@ export class MainComponent implements OnInit, AfterViewInit {
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  linksAr: any = [];
 
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.auth.statistics().subscribe((res)=>{
+      this.linksAr.push(res);
+      this.linksAr.forEach((links: any)=>{
+        links.forEach((item: LinksInterface)=>{
+          this.dataSource.data.push(item)
+        });
+        this.dataSource.filter = '';
+        this.paginator._changePageSize(this.paginator.pageSize);
+      })
+    })
   }
 
   ngAfterViewInit() {
