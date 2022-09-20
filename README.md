@@ -1,10 +1,14 @@
-# LinkShortening
+##Application launch
+
+1) Install node.js on the official site: https://nodejs.org/en/
+2) Open command prompt and type: npm i @angular/cli -g
+3) Сopy link from git repository:  https://github.com/PashaZhelezyaka/Link-Shortening.git
+4) Open command prompt and type: git clone https://github.com/PashaZhelezyaka/Link-Shortening.git
+5) Open command prompt and type: npm i
+6) After installing all packages. Run `ng serve` for a dev server
+7) Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
