@@ -1,4 +1,4 @@
-##Application launch
+## Application launch
 
 1) Install node.js on the official site: https://nodejs.org/en/
 2) Open command prompt and type: npm i @angular/cli -g
