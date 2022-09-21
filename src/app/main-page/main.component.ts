@@ -4,6 +4,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { LinksInterface } from "../shared/interface/interface";
 import { MatPaginator } from "@angular/material/paginator";
 import { environment } from "../../environments/environment";
+import { Router } from "@angular/router";
 
 const links: LinksInterface[] = [];
 
@@ -23,7 +24,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   linksAr: any = [];
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.auth.statistics().subscribe((res)=>{
@@ -53,6 +54,10 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   clickTest(shortURL: string){
     this.copyShortUrl = `http://79.143.31.216/s/${shortURL}`
+  }
 
+  logout(){
+    this.auth.logout();
+    this.router.navigateByUrl('login');
   }
 }

@@ -25,3 +25,9 @@
 .copyLink {
   cursor: pointer;
 }
+.logout {
+  position: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-content: stretch;
+}
